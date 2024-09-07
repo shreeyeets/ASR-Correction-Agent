@@ -17,7 +17,7 @@ The ASR Correction Agent takes input text in uppercase letters that might contai
 4. **Local Search Algorithm**: The agent runs for a set number of iterations, refining the sentence by exploring **neighboring states** (sentences generated through phoneme corrections and word insertions). The state with the lowest cost is selected as the best correction.
 
 ## Project Structure
-
+```
 ASR_Correction_Agent/
 ├── data/
 │   ├── phoneme_table.json  # Phoneme substitution table with possible phoneme errors.
@@ -25,7 +25,7 @@ ASR_Correction_Agent/
 │   ├── data.pkl            # Sample data containing audio, incorrect text, and corrected text.
 ├── driver.py               # Script for running the agent on the provided data.
 ├── solution.py             # Main implementation of the ASR correction agent.
-
+```
 
 
 ## Key Features
