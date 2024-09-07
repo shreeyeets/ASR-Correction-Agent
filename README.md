@@ -18,13 +18,14 @@ The ASR Correction Agent takes input text in uppercase letters that might contai
 
 ## Project Structure
 
-ASR_Correction_Agent/ 
-├── data/ 
-│   ├── phoneme_table.json # Phoneme substitution table with possible phoneme errors. 
-│   ├── vocabulary.json # List of words that could be inserted into the sentence. 
-│   ├── data.pkl # Sample data containing audio, incorrect text, and corrected text. 
-├── driver.py # Script for running the agent on the provided data. 
-├── solution.py # Main implementation of the ASR correction agent.
+ASR_Correction_Agent/
+├── data/
+│   ├── phoneme_table.json  # Phoneme substitution table with possible phoneme errors.
+│   ├── vocabulary.json     # List of words that could be inserted into the sentence.
+│   ├── data.pkl            # Sample data containing audio, incorrect text, and corrected text.
+├── driver.py               # Script for running the agent on the provided data.
+├── solution.py             # Main implementation of the ASR correction agent.
+
 
 
 ## Key Features
