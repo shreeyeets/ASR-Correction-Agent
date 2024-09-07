@@ -66,25 +66,25 @@ class Agent(object):
         # Apply phoneme corrections
         # Allow substitutions anywhere in the word based on the phoneme table
         for i, word in enumerate(words_in_state):
-
-            # Iterate through the phoneme table to find replacements
-            for correct_phoneme, incorrect_phonemes in self.phoneme_table.items():
-                for incorrect_phoneme in incorrect_phonemes:
-                    # Look for the incorrect phoneme anywhere in the word
-                    start = 0
-                    while start < len(word):
-                        index = word.find(incorrect_phoneme, start)
+            if word not in self.vocabulary:##########################################################################################################################
+                # Iterate through the phoneme table to find replacements
+                for correct_phoneme, incorrect_phonemes in self.phoneme_table.items():
+                    for incorrect_phoneme in incorrect_phonemes:
+                        # Look for the incorrect phoneme anywhere in the word
+                        start = 0
+                        while start < len(word):
+                            index = word.find(incorrect_phoneme, start)
                         
-                        if index != -1:
-                            new_word = word[:index] + correct_phoneme + word[index + len(incorrect_phoneme):]
-                            new_state = ' '.join(words_in_state[:i] + [new_word] + words_in_state[i+1:])
-                            neighbors.append(new_state)
-                            # Debugging print to show the newly generated neighbor
-                            #print(f"Generated neighbor: {new_state}")
+                            if index != -1:
+                                new_word = word[:index] + correct_phoneme + word[index + len(incorrect_phoneme):]
+                                new_state = ' '.join(words_in_state[:i] + [new_word] + words_in_state[i+1:])
+                                neighbors.append(new_state)
+                                # Debugging print to show the newly generated neighbor
+                                #print(f"Generated neighbor: {new_state}")
                             
-                            start = index + len(incorrect_phoneme)
-                        else:
-                            break
+                                start = index + len(incorrect_phoneme)
+                            else:
+                                break
 
         return neighbors
 
@@ -92,15 +92,23 @@ class Agent(object):
         neighbors = []
         words_in_state = state.split()
 
+        word_inserted = False
+        
         # Insert words at the beginning if the sentence does not start with an article or preposition
         #if words_in_state[0] not in ["THE", "A", "AN", "TO", "IN", "ON", "HE", "SHE", "I", "IT", "THEY", "IF", "WHAT", "WHICH", "WHERE", "THERE", "THIS"]:
-        for word in self.vocabulary:
-            neighbors.append(word + " " + state)  # Add to the beginning
-
+        if not word_inserted:
+            for word in self.vocabulary:
+                if word not in words_in_state:
+                    neighbors.append(word + " " + state)  # Add to the beginning
+                    word_inserted = True
         # Insert words at the end if the sentence ends with a conjunction or preposition
         #if words_in_state[-1] in ["AND", "OR", "BUT", "TO", "WITH", "IN", "FOR", "THE", "A", "AN", "HAS", "HAD", "HAVE"]:
-        for word in self.vocabulary:
-            neighbors.append(state + " " + word)  # Add to the end
+        word_inserted = False##########################################################################################################################
+        if not word_inserted:
+            for word in self.vocabulary:
+                if word not in words_in_state:
+                    neighbors.append(state + " " + word)  # Add to the beginning
+                    word_inserted = True
 
         # Print out all neighbors generated
         #print(f"Generated neighbors for state '{state}':")
@@ -108,4 +116,3 @@ class Agent(object):
         #    print(f" - {neighbor}")
             
         return neighbors
-
