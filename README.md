@@ -18,7 +18,7 @@ The ASR Correction Agent takes input text in uppercase letters that might contai
 
 ## Project Structure
 ```
-ASR_Correction_Agent/
+ASR_Correction_Agent
 ├── data/
 │   ├── phoneme_table.json  # Phoneme substitution table with possible phoneme errors.
 │   ├── vocabulary.json     # List of words that could be inserted into the sentence.
