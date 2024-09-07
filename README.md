@@ -24,9 +24,9 @@ ASR_Correction_Agent
 │   ├── vocabulary.json     # List of words that could be inserted into the sentence.
 │   ├── data.pkl            # Sample data containing audio, incorrect text, and corrected text.
 ├── driver.py               # Script for running the agent on the provided data.
-├── solution.py             # Main implementation of the ASR correction agent.
+├── environment.yml         # Conda environment setup for the project.
 ├── shorten.py              # Script for reducing input audio size for testing purpose.
-└── environment.yml         # Conda environment setup for the project.
+└── solution.py             # Main implementation of the ASR correction agent.
 ```
 
 
