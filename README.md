@@ -25,6 +25,8 @@ ASR_Correction_Agent
 │   ├── data.pkl            # Sample data containing audio, incorrect text, and corrected text.
 ├── driver.py               # Script for running the agent on the provided data.
 ├── solution.py             # Main implementation of the ASR correction agent.
+├── shorten.py              # Script for reducing input audio size for testing purpose.
+└── environment.yml         # Conda environment setup for the project.
 ```
 
 
@@ -33,4 +35,4 @@ ASR_Correction_Agent
 1. **Local Search Algorithm**: Efficiently refines ASR output by exploring phoneme corrections and word insertions.
 2. **Phoneme Correction**: Identifies and corrects phoneme errors based on a provided phoneme table.
 3. **Word Insertion**: Adds missing words at the start or end of a sentence based on a vocabulary list.
-4. **Cost Optimization**: Uses a cost function to guide the search towards accurate corrections.
+4. **Cost Optimization**: Uses a pre-defined cost function to guide the search towards accurate corrections.
